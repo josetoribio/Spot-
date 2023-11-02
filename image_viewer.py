@@ -132,6 +132,30 @@ def main(argv):
     robot.sync_with_directory()
     robot.time_sync.wait_for_sync()
 
+    #from arm_grapse
+    # See hello_spot.py for an explanation of these lines.
+    #bosdyn.client.util.setup_logging(config.verbose)
+
+    sdk = bosdyn.client.create_standard_sdk('ArmObjectGraspClient')
+    #robot = sdk.create_robot(config.hostname)
+   # bosdyn.client.util.authenticate(robot)
+    robot.time_sync.wait_for_sync()
+
+    assert robot.has_arm(), 'Robot requires an arm to run this example.'
+
+    # Verify the robot is not estopped and that an external application has registered and holds
+    # an estop endpoint.
+   # verify_estop(robot)
+
+    lease_client = robot.ensure_client(bosdyn.client.lease.LeaseClient.default_service_name)
+   
+    image_client = robot.ensure_client(ImageClient.default_service_name)
+
+  
+
+
+
+
     image_client = robot.ensure_client(options.image_service)
     requests = [
         build_image_request(source, quality_percent=options.jpeg_quality_percent,
