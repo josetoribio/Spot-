@@ -1,5 +1,5 @@
 # Spot-
- Object Detection for Grounding navigational commands to linear temporal logic 
+
 
 
 Image Fetch Uses Yolov8 for object detection, with this information we can bound a square around the detected object 
